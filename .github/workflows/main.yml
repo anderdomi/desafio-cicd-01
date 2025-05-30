@@ -17,14 +17,14 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest #agente de execução em ambiente
-      steps: #passos executados #declarando o ambiente
-        - name: Obtendo o código do projeto 
-          uses: actions/checkout@v4
-        - name: setup do projeto
-          uses: actions/setup-dotnet@v4
-            with: 
-            dotnet-version: "8.0.300"
-        - name: Executando o comando build
-          working-director: ./src
-          run: dotnet build review ReviewFilmes.sln
+    steps: #passos executados #declarando o ambiente
+      - name: Obtendo o código do projeto 
+        uses: actions/checkout@v4
+      - name: setup do projeto
+        uses: actions/setup-dotnet@v4
+          with: 
+          dotnet-version: "8.0.300"
+      - name: Executando o comando build
+        working-director: ./src
+        run: dotnet build review ReviewFilmes.sln
           
