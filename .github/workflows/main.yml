@@ -9,7 +9,9 @@ on:
 #Colando o evento que vai disparar o workflow
     push:
       branches:
-        -main
+        - main
+
+        
 #Especifique os conjuntos de instruções, jobs.
 jobs:
   build:
