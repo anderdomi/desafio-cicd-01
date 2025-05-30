@@ -22,8 +22,8 @@ jobs:
         uses: actions/checkout@v4
       - name: setup do projeto
         uses: actions/setup-dotnet@v4
-          with: 
-            dotnet-version: "8.0.300"
+        with: 
+          dotnet-version: "8.0.300"
       - name: Executando o comando build
         working-director: ./src
         run: dotnet build review ReviewFilmes.sln
