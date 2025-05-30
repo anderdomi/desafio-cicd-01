@@ -5,7 +5,7 @@ run-name: Pipeline CI/CD executada por ${{ github.actor em ${{ github.run_number
 #Disparando a exec usando ON.
 on:
 #Executando manualmente precisa usar o workflow_dispach
-  workflow_dispach:
+  workflow_dispatch:
 #Colando o evento que vai disparar o workflow
     push:
       branches:
