@@ -12,7 +12,7 @@ on:
         - main
 
         
-#Especifique os conjuntos de instruções, jobs.
+#Especifique os conjuntos de instruções, jobs.1
 jobs:
   build:
     name: Build
