@@ -1,6 +1,6 @@
 name: Pipeline CI/CD
 #Nome de execução da pipeline
-run-name: Pipeline CI/CD executada por ${{ github.actor em ${{ github.run_number }}
+run-name: Pipeline CI/CD executada por ${{ github.actor }} em ${{ github.run_number }}
 
 #Disparando a exec usando ON.
 on:
