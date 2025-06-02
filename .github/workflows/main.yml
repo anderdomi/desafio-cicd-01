@@ -7,10 +7,9 @@ on:
 #Executando manualmente precisa usar o workflow_dispatch
   workflow_dispatch:
 #Colando o evento que vai disparar o workflow
-    push:
-      branches:
-        - main
-
+  push:
+    branches:
+      - main
         
 #Especifique os conjuntos de instruções, jobs.1
 jobs:
