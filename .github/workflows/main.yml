@@ -27,27 +27,27 @@ jobs:
         working-directory: ./src
         run: dotnet build review ReviewFilmes.sln
           
-release:
-  name: Criação de release
-  runs-on: ubuntu-latest
-  needs: [build] 
-  steps:
-      - name: Obtendo o código do projeto 
-        uses: actions/checkout@v4
-      - name: Logando no docker hub
-        uses: docker/logins-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USER }}
-          password: ${{ secrets.DOCKERHUB_PWD }}
-      - name: Build e Push da imagem
-        uses: docker/build-push-action@v6
-        with:
-          push: true
-          context: ./src
-          file: ./src/Review-Filmes.Web/Dockerfile
-          tags:
-            anderdomi/projetogithaction-pro:latest
-            anderdomi/projetogithaction-pro:v${{ github.run_number }}
+  release:
+    name: Criação de release
+    runs-on: ubuntu-latest
+    needs: [build] 
+    steps:
+        - name: Obtendo o código do projeto 
+          uses: actions/checkout@v4
+        - name: Logando no docker hub
+          uses: docker/logins-action@v3
+          with:
+            username: ${{ secrets.DOCKERHUB_USER }}
+            password: ${{ secrets.DOCKERHUB_PWD }}
+        - name: Build e Push da imagem
+          uses: docker/build-push-action@v6
+          with:
+            push: true
+            context: ./src
+            file: ./src/Review-Filmes.Web/Dockerfile
+            tags:
+              anderdomi/projetogithaction-pro:latest
+              anderdomi/projetogithaction-pro:v${{ github.run_number }}
 
-#Inserindo testes de qualidade
+  #Inserindo testes de qualidade
 
