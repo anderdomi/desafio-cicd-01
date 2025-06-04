@@ -25,7 +25,7 @@ jobs:
           dotnet-version: "8.0.300"
       - name: Executando o comando build
         working-directory: ./src
-        run: dotnet build ReviewFilmes.sln
+        run: dotnet build Review-Filmes.sln
   
         #reaproveitendo workflow
   testes:
