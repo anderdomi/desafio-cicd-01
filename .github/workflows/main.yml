@@ -49,5 +49,5 @@ jobs:
               anderdomi/projetogithaction-pro:latest
               anderdomi/projetogithaction-pro:v${{ github.run_number }}
 
-  #Inserindo testes de qualidade
+  #Inserindo testes de qualidade teste
 
