@@ -48,3 +48,6 @@ release:
           tags:
             anderdomi/projetogithaction-pro:latest
             anderdomi/projetogithaction-pro:v${{ github.run_number }}
+
+#Inserindo testes de qualidade
+
