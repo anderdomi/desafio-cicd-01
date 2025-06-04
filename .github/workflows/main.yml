@@ -26,7 +26,12 @@ jobs:
       - name: Executando o comando build
         working-directory: ./src
         run: dotnet build review ReviewFilmes.sln
-          
+  
+        #reaproveitendo workflow
+  testes:
+    needs: [build]
+    uses: anderdomi/desafio-cicd-01/.github/workflows/testes.yml@main
+
   release:
     name: Criação de release
     runs-on: ubuntu-latest
