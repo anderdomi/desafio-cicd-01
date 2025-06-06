@@ -17,19 +17,19 @@ jobs:
               working-directory: ./src
               run: dotnet test ./Review-Filmes.Test.Unit/Review-Filmes.Test.Unit.csproj
 
-        integration-test: 
-            name: Teste de integração
-            runs-on: ubuntu-latest
-            services:
-                postgre:
-                    image: postgres-latest
-                    ports:
-                        - 5432:5432
-                    env:
-                        POSTGRES_USER: revies
-                        POSTGRES_PASSWORD: postgrespwd
-                        POSTGRES_DB: review-filmes
-            steps:
+    integration-test: 
+        name: Teste de integração
+        runs-on: ubuntu-lates
+        services:
+            postgre:
+                image: postgres-latest
+                ports:
+                    - 5432:5432
+                env:
+                    POSTGRES_USER: revies
+                    POSTGRES_PASSWORD: postgrespwd
+                    POSTGRES_DB: review-filmes
+        steps:
             - name: Obtendo o código do projeto 
               uses: actions/checkout@v4
             - name: setup do projeto
