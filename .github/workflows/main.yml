@@ -11,7 +11,7 @@ on:
     branches:
       - main
         
-#Especifique os conjuntos de instruções, jobs.1
+#Especifique os conjuntos de instruções, jobs
 jobs:
   build:
     name: Build
