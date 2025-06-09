@@ -52,6 +52,7 @@ jobs:
           - name: Setup JDK
             uses: actions/setup-java@v4
             with:
+              distribution: adopt
               java-version: '21'
           
           - name: setup do projeto
