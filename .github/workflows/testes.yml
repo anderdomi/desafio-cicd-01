@@ -42,7 +42,7 @@ jobs:
               env:
                   ConnectionStrings_DefaultConnection: "Host=localhost;Port=5432;Database=review-filmes;Username=review;Password=postgres"
 
-    sonarqube:
+  sonarqube:
       name: Scan com sonarqube
       runs-on: ubuntu-latest
    		    steps:
