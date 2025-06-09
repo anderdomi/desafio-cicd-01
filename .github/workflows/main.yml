@@ -49,7 +49,7 @@ jobs:
           with:
             push: true
             context: ./src
-            file: ./src/Review-Filmes.Web/Dockerfile
+            file: ./Review-Filmes.Web/Dockerfile
             tags:
               anderdomi/projetogithaction-pro:latest
               anderdomi/projetogithaction-pro:v${{ github.run_number }}
