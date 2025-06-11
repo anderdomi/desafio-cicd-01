@@ -66,7 +66,7 @@ jobs:
           - name: Build e analise
             working-directory: ./src
             run: |
-              dotnet sonarscanner begin /k:"DevopsPro2" /d:sonar.host.url="ecrets.SONAR_HOST_URL"  /d:sonar.token="ssecrets.SONAR_TOKEN"
+              dotnet sonarscanner begin /k:"DevopsPro2" /d:sonar.host.url="secrets.SONAR_HOST_URL"  /d:sonar.token="ssecrets.SONAR_TOKEN"
               donet build Review-Filmes.sln
               dotnet sonarscanner end /d:sonar.token="secrets.SONAR_TOKEN"
 
