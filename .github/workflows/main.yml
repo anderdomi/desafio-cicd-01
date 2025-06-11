@@ -31,7 +31,7 @@ jobs:
   testes:
     needs: [build]
     uses: anderdomi/desafio-cicd-01/.github/workflows/testes.yml@main
-
+    secrets: inherit
   release:
     name: Criação de release
     runs-on: ubuntu-latest
