@@ -32,6 +32,7 @@ jobs:
     needs: [build]
     uses: anderdomi/desafio-cicd-01/.github/workflows/testes.yml@main
     secrets: inherit
+
   release:
     name: Criação de release
     runs-on: ubuntu-latest
@@ -39,6 +40,10 @@ jobs:
     steps:
         - name: Obtendo o código do projeto 
           uses: actions/checkout@v4
+        - name: Análise do Dockerfile usando hadolint
+          uses: hadolint/hadolint-action@3.1.0
+          with:
+            dockerfile: .src/Review-Filmes.Web/Dockerfile
         - name: Logando no docker hub
           uses: docker/logins-action@v3
           with:
@@ -55,4 +60,19 @@ jobs:
               anderdomi/projetogithaction-pro:v${{ github.run_number }}
 
   #Inserindo testes de qualidade teste
+  #Verificando qualidade da imagem. 
+        - name: Executando trivy
+          uses: aquasecurity/trivy-action@0.23.0
+          with:
+            scan-type: 'image'
+            image-ref: anderdomi/projetogithaction-pro:v${{ github.run_number }}
+            format: sarif
+            output: trivy-docker-result.sarif
+            severity: '	UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL '
+
+        - name: Upload do arquivo trivy para o GitHub
+          uses: github/codeql-action/upload-sarif@v3
+          with:
+            category: docker-result
+            sarif_file: trivy-docker-result.sarif
 
