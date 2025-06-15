@@ -60,15 +60,15 @@ jobs:
             with: 
               dotnet-version: "8.0.300"                       
           
-          - name: Instalação dop Sonarqube scanner
-            run: dotnet tool install --global dotnet-sonarscanner         
-          
-          - name: Build e analise
-            working-directory: ./src
-            run: |
-              dotnet sonarscanner begin /k:"DevopsPro2" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}"
-              dotnet build Review-Filmes.sln
-              dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+          #- name: Instalação dop Sonarqube scanner
+          #  run: dotnet tool install --global dotnet-sonarscanner         
+          #
+          #- name: Build e analise
+          #  working-directory: ./src
+          #  run: |
+          #    dotnet sonarscanner begin /k:"DevopsPro2" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}"
+          #    dotnet build Review-Filmes.sln
+          #    dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
               
           - name: Verificação do Quality Gate
             uses: sonarsource/sonarqube-quality-gate-action@master
