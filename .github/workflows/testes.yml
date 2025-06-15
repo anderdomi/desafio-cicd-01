@@ -70,18 +70,18 @@ jobs:
           #    dotnet build Review-Filmes.sln
           #    dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
               
-          - name: Verificação do Quality Gate
-            uses: sonarsource/sonarqube-quality-gate-action@master
-            id: sonarqube-quality-gate-ckeck
-            env:
-              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-              SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-            with:
-              scanMetadataReportFile: ./src/.sonarqube/out/.sonar/report-task.txt
-          
-          - name: "exibir quality gate status"
-            if: ${{ always() }}
-            run: echo "O status do quality gate é ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status }}"
+          #- name: Verificação do Quality Gate
+          #  uses: sonarsource/sonarqube-quality-gate-action@master
+          #  id: sonarqube-quality-gate-ckeck
+          #  env:
+          #    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          #    SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          #  with:
+          #    scanMetadataReportFile: ./src/.sonarqube/out/.sonar/report-task.txt
+          #
+          #- name: "exibir quality gate status"
+          #  if: ${{ always() }}
+          #  run: echo "O status do quality gate é ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status }}"
 
 
           
