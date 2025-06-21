@@ -66,16 +66,17 @@ jobs:
           - name: Build e análise
             working-directory: ./src
             run: |
-              dotnet sonarscanner begin /k:"DevopsPro2" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+              #dotnet sonarscanner begin /k:"DevopsPro2" /d:sonar.host.url="http://localhost:9000" /d:sonar.login="sqp_5023cb588cc3a28dc07421aaf20769e2c6f1ab69""
+              dotnet sonarscanner begin /k:"DevopsPro2" /d:sonar.host.url="http://localhost:9000" /d:sonar.login=""sqp_5023cb588cc3a28dc07421aaf20769e2c6f1ab69""
               dotnet build Review-Filmes.sln
-              dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+              dotnet sonarscanner end /d:sonar.token="sqp_5023cb588cc3a28dc07421aaf20769e2c6f1ab69""
               
           - name: Verificação do Quality Gate
             uses: sonarsource/sonarqube-quality-gate-action@master
             id: sonarqube-quality-gate-ckeck
             env:
-              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-              SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+              SONAR_TOKEN: sqp_5023cb588cc3a28dc07421aaf20769e2c6f1ab69"
+              SONAR_HOST_URL: http://localhost:9000
             with:
               scanMetadataReportFile: ./src/.sonarqube/out/.sonar/report-task.txt
           
