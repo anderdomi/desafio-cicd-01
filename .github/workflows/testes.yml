@@ -28,7 +28,7 @@ jobs:
                 env:
                     POSTGRES_USER: revies
                     POSTGRES_PASSWORD: postgrespwd
-                    POSTGRES_DB: review-filmes
+                    POSTGRES_DB: reviewfilmes
         steps:
             - name: Obtendo o código do projeto 
               uses: actions/checkout@v4
