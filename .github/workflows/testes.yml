@@ -42,48 +42,45 @@ jobs:
               env:
                   ConnectionStrings_DefaultConnection: "Host=localhost;Port=5432;Database=review-filmes;Username=review;Password=postgres"
 
-    #sonarqube:
-    #  name: Scan com sonarqube
-    #  runs-on: ubuntu-latest
-    #  steps:
-    #      - name: Obtendo o código do projeto 
-    #        uses: actions/checkout@v4
-    #      
-    #      - name: Setup JDK
-    #        uses: actions/setup-java@v4
-    #        with:
-    #          distribution: adopt
-    #          java-version: '21'
-    #      
-    #      - name: setup do projeto
-    #        uses: actions/setup-dotnet@v4
-    #        with: 
-    #          dotnet-version: "8.0.300"                       
-    #      
-    #      - name: Instalação dop Sonarqube scanner
-    #        run: dotnet tool install --global dotnet-sonarscanner         
-    #      
-    #      - name: Build e análise
-    #        working-directory: ./src
-    #        run: |
-    #          dotnet sonarscanner begin /k:"DevopsPro2" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
-    #          dotnet build Review-Filmes.sln
-    #          dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
-    #          
-    #      - name: Verificação do Quality Gate
-    #        uses: sonarsource/sonarqube-quality-gate-action@master
-    #        id: sonarqube-quality-gate-ckeck
-    #        env:
-    #          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-    #          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-    #        with:
-    #          scanMetadataReportFile: ./src/.sonarqube/out/.sonar/report-task.txt
-    #      
-    #      - name: "exibir quality gate status"
-    #        if: ${{ always() }}
-    #        run: echo "O status do quality gate é ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status }}"
-
-
+    sonarqube:
+      name: Scan com sonarqube
+      runs-on: ubuntu-latest
+      steps:
+          - name: Obtendo o código do projeto 
+            uses: actions/checkout@v4
           
-
+          - name: Setup JDK
+            uses: actions/setup-java@v4
+            with:
+              distribution: adopt
+              java-version: '21'
+          
+          - name: setup do projeto
+            uses: actions/setup-dotnet@v4
+            with: 
+              dotnet-version: "8.0.300"                       
+          
+          - name: Instalação dop Sonarqube scanner
+            run: dotnet tool install --global dotnet-sonarscanner         
+          
+          - name: Build e análise
+            working-directory: ./src
+            run: |
+              dotnet sonarscanner begin /k:"DevopsPro2" /d:sonar.host.url="${{ secrets.SONAR_HOST_URL }}" /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+              dotnet build Review-Filmes.sln
+              dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
               
+          - name: Verificação do Quality Gate
+            uses: sonarsource/sonarqube-quality-gate-action@master
+            id: sonarqube-quality-gate-ckeck
+            env:
+              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+              SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+            with:
+              scanMetadataReportFile: ./src/.sonarqube/out/.sonar/report-task.txt
+          
+          - name: "exibir quality gate status"
+            if: ${{ always() }}
+            run: echo "O status do quality gate é ${{ steps.sonarqube-quality-gate-check.outputs.quality-gate-status }}"
+         
+             
